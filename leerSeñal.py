@@ -8,3 +8,7 @@ import numpy as np
 def leerSenal(nombre):
     frecuencia, sonido = waves.read(nombre)
     return frecuencia, sonido
+
+def obtenerIntervaloTiempo(inicio, fin, step):
+    t = np.arange(inicio,fin,step)
+    return t

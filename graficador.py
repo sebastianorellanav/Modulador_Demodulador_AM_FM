@@ -11,7 +11,7 @@ def graficarEnTiempo(tiempo, senal):
 
 def graficarEnFrecuencias(freq, senal):
     plt.figure(figsize=(9, 5))
-    plt.plot(freq, tf.real)
+    plt.plot(freq, senal.real)
     plt.xlabel("Frecuencia (Hz)")
     plt.ylabel('Amplitud (cm)')
     plt.title("Transformada de Fourier de la Señal Original")

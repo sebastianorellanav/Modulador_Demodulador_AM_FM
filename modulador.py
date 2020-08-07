@@ -1,8 +1,9 @@
 import numpy as np
 
-def modularSenalAM(freq, senal):
+def modularSenalAM(freq, senal, tiempo):
     #Señal portadora -> (definir bien la frecuencia a utilizar)
-    prt = np.cos(2*pi*100*t)
+    pi = np.pi
+    prt = np.cos(2*pi*freq*tiempo)
 
     mod = senal*prt
 
