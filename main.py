@@ -16,4 +16,6 @@ import leerSeñal as ls
 #Leer Señal desde el archivo de audio
 freqOriginal, senalOriginal = ls.leerSenal('handel.wav')
 
-#
+#obtener transformada de fourier de la señal original
+
+#Graficar señal en el tiempo y en la frecuencia
