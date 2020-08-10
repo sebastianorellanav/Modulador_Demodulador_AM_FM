@@ -28,7 +28,12 @@ gf.graficarEnTiempo(intervaloTiempo, senalOriginal, "Señal Original", "f(t) = "
 gf.graficarEnFrecuencias(intervaloFreq, transformada, "Transformada de la original", "Transformada")
 
 #modular señal
-modulada = mod.modularSenalAM(freqOriginal + 500, senalOriginal, intervaloTiempo)
+portadora = mod.obtenerPortadora(freqOriginal+500, intervaloTiempo)
+intervaloFreq, transformada = ft.obtenerTransformada(portadora)
+gf.graficarEnFrecuencias(intervaloFreq, transformada, "Transformada de la Portadora", "")
+
+modulada = mod.modularSenalAM(senalOriginal, portadora)
+
 
 gf.graficarEnTiempo(intervaloTiempo, modulada, "Señal Modulada", "f(t) = ")
 
