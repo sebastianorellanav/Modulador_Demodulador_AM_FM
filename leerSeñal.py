@@ -9,6 +9,6 @@ def leerSenal(nombre):
     frecuencia, sonido = waves.read(nombre)
     return frecuencia, sonido
 
-def obtenerIntervaloTiempo(inicio, fin, step):
-    t = np.arange(inicio,fin,step)
+def obtenerIntervaloTiempo(senal,freq):
+    t = np.arange(len(senal))/float(freq)
     return t

@@ -13,11 +13,12 @@ import leerSeñal as ls
 import modulador as mod
 import fourier as ft
 import graficador as gf
+import matplotlib.pylab as plt
 
 #Main
 #Leer Señal desde el archivo de audio
 freqOriginal, senalOriginal = ls.leerSenal('handel.wav')
-intervaloTiempo = ls.obtenerIntervaloTiempo(0,9,1/1000)
+intervaloTiempo = ls.obtenerIntervaloTiempo(senalOriginal, freqOriginal)
 
 #obtener transformada de fourier de la señal original
 intervaloFreq, transformada = ft.obtenerTransformada(senalOriginal)
@@ -28,3 +29,5 @@ gf.graficarEnFrecuencias(intervaloFreq, transformada)
 
 #modular señal
 modulada = mod.modularSenalAM(freqOriginal + 500, senalOriginal, intervaloTiempo)
+
+plt.show()
