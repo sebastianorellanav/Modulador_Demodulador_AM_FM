@@ -10,5 +10,5 @@ def leerSenal(nombre):
     return frecuencia, sonido
 
 def obtenerIntervaloTiempo(senal,freq):
-    t = np.arange(len(senal))/float(freq)
+    t = np.linspace(0, len(senal)/freq, len(senal))
     return t

@@ -7,14 +7,14 @@ def graficarEnTiempo(tiempo, senal, nombre, etiqueta):
     plt.ylabel('Amplitud (cm)')
     plt.title(nombre)
     plt.legend(loc='upper right')
-    plt.xlim([0,0.01]) 
+    #plt.xlim([0,0.01]) 
     plt.grid()
 
 def graficarEnFrecuencias(freq, senal, nombre, etiqueta):
     plt.figure(figsize=(9, 5))
-    plt.fill_between(freq, senal.real)
+    plt.plot(freq, senal.real)
     plt.xlabel("Frecuencia (Hz)")
     plt.ylabel('Amplitud (cm)')
     plt.title(nombre)
-    #plt.xlim([-9,9]) -> depende del grafico
+    #plt.xlim([-1000,1000])
     plt.grid()
