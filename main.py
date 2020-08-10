@@ -24,10 +24,12 @@ intervaloTiempo = ls.obtenerIntervaloTiempo(senalOriginal, freqOriginal)
 intervaloFreq, transformada = ft.obtenerTransformada(senalOriginal)
 
 #Graficar señal en el tiempo y en la frecuencia
-gf.graficarEnTiempo(intervaloTiempo, senalOriginal)
-gf.graficarEnFrecuencias(intervaloFreq, transformada)
+gf.graficarEnTiempo(intervaloTiempo, senalOriginal, "Señal Original", "f(t) = ")
+gf.graficarEnFrecuencias(intervaloFreq, transformada, "Transformada de la original", "Transformada")
 
 #modular señal
 modulada = mod.modularSenalAM(freqOriginal + 500, senalOriginal, intervaloTiempo)
+
+gf.graficarEnTiempo(intervaloTiempo, modulada, "Señal Modulada", "f(t) = ")
 
 plt.show()
