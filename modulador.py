@@ -7,8 +7,18 @@ def modularSenalAM(senal, portadora):
 
     return mod
 
-def obtenerPortadora(freq, tiempo):
+def obtenerPortadoraAM(freq, tiempo):
     pi = np.pi
-    prt = np.cos(2*pi*freq*tiempo)
+    freqNyquist = 2*freq        #Se multiplica por 2 para cumplir con teorema de Nyquist
+    prt = np.cos(2*pi*freqNyquist*tiempo)
 
-    return prt
+    return prt,freqNyquist
+
+def modularSenalFM(senal, freq, tiempo):
+    pi = np.pi
+    freqNyquist = 2*freq        #Se multiplica por 2 para cumplir con teorema de Nyquist
+    mod = np.cos(2*pi*freqNyquist*tiempo + (np.cumsum(senal)/freq))
+    return mod,freqNyquist
+
+def tiempoModulada(largoInterpolada,freq):
+    return np.linspace(0,largoInterpolada/freq,largoInterpolada)

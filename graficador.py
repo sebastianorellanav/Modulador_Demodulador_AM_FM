@@ -2,7 +2,7 @@ import matplotlib.pylab as plt
 
 def graficarEnTiempo(tiempo, senal, nombre, etiqueta):
     plt.figure(figsize=(9, 5))
-    plt.plot(tiempo, senal, label=etiqueta)
+    plt.plot(tiempo, senal)
     plt.xlabel("tiempo (s)")
     plt.ylabel('Amplitud (cm)')
     plt.title(nombre)
@@ -12,7 +12,7 @@ def graficarEnTiempo(tiempo, senal, nombre, etiqueta):
 
 def graficarEnFrecuencias(freq, senal, nombre, etiqueta):
     plt.figure(figsize=(9, 5))
-    plt.plot(freq, senal.real)
+    plt.plot(freq, senal)
     plt.xlabel("Frecuencia (Hz)")
     plt.ylabel('Amplitud (cm)')
     plt.title(nombre)
