@@ -6,9 +6,9 @@ import numpy as np
 #        sonido: contiene datos del sonido
 #Descripción: leer archivo con señal de sonido
 def leerSenal(nombre):
-    frecuencia, sonido = waves.read(nombre)
-    return frecuencia, sonido
+    frecuencia_muestreo_senal, sonido = waves.read(nombre)
+    return frecuencia_muestreo_senal, sonido
 
-def obtenerIntervaloTiempo(senal,freq):
-    t = np.linspace(0, len(senal)/freq, len(senal))
+def obtenerIntervaloTiempo(senal,frecuencia_muestreo_senal):
+    t = np.linspace(0, len(senal)/frecuencia_muestreo_senal, len(senal))
     return t

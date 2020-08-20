@@ -1,7 +1,11 @@
 import numpy as np
 from scipy import interpolate
 
-def interpolacionAM(senal,tiempo):
+def obtenerTiempoInterpolado(senal,tiempo,frecuenciaMuestreoSenal,frecuenciaMuestreoPortadora):
     interpolacion = interpolate.interp1d(tiempo,senal)
-    senalInterpolada = interpolacion(tiempo)
+    tiempoInterpolado = np.arange(0, len(senal)/frecuenciaMuestreoSenal,frecuenciaMuestreoPortadora)
+    return tiempoInterpolado,interpolacion
+
+def obtenerSenalInterpolada(interpolacion,tiempoInterpolado):
+    senalInterpolada = interpolacion(tiempoInterpolado)
     return senalInterpolada
