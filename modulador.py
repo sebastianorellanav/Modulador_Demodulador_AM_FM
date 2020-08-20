@@ -1,14 +1,12 @@
 import numpy as np
-import matplotlib.pylab as plt
-from scipy import interpolate
+import scipy.integrate as integrate
 
 def modularSenalAM(senal, portadora):
     mod = senal*portadora
     return mod
 
 
-def modularSenalFM(senal, freq, tiempo):
-    pi = np.pi
-    freqNyquist = 2*freq        #Se multiplica por 2 para cumplir con teorema de Nyquist
-    mod = np.cos(2*pi*freqNyquist*tiempo + (np.cumsum(senal)/freq))
-    return mod,freqNyquist
+def modularSenalFM(Ac,senal,senalInterpolada, tiempoInterpolado,frecuenciaInicialPortadora):
+    senalIntegrada = integrate.cumtrapz(senalInterpolada,tiempoInterpolado,initial=0) 
+    modulacionFM = Ac*np.cos(np.pi*frecuenciaInicialPortadora*tiempoInterpolado + np.pi*senalIntegrada)
+    return modulacionFM

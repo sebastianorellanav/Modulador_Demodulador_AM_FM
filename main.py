@@ -56,18 +56,27 @@ moduladacionAM = mod.modularSenalAM(senalInterpolada,portadora)
 #Obteniendo modulación AM en el frecuencia
 transformadaAM,frecuenciaAM = ft.obtenerTransformada(moduladacionAM,frecuenciaMuestreoPortadora)
 
-################################## 4. Demodulación AM ##################################
+################################### 4. Demodulación AM ##################################
 
 #Obteniendo demodulación AM en el tiempo
 demodulacionAM = dem.demodularAm(moduladacionAM,portadora)
 taps = 200			#numero de pulsos
 cutoff = 1700		#frecuencia de corte
+#Aplicando filtro pasabajos en demodulación
 demodulacionAM = ft.filtroPasaBajo(demodulacionAM,frecuenciaMuestreoSenal,taps,cutoff,0)
 
-#Obteniendo demodulación AM en el tiempo
+#Obteniendo demodulación AM en la frecuencia
 transformadaDemoduladaAM,frecuenciaDemoduladaAM =  ft.obtenerTransformada(demodulacionAM,frecuenciaMuestreoSenal)
 
-################################## 5.Graficos ############################################
+################################## 5. Modulación FM ##################################
+
+#Obteniendo demodulación FM en el tiempo
+moduladacionFM = mod.modularSenalFM(Ac,senal,senalInterpolada, tiempoInterpolado,frecuenciaInicialPortadora)
+
+#Obteniendo modulación FM en el frecuencia
+transformadaFM,frecuenciaFM = ft.obtenerTransformada(moduladacionFM,frecuenciaMuestreoSenal)
+
+################################### Graficos ############################################
 
 #1. Graficos AM en el tiempo
 gf.crearSubGrafico(senal,tiempo,'Señal original en el tiempo','Tiempo (s)','Amplitud','g',4,1,1)
@@ -85,7 +94,21 @@ gf.crearSubGrafico(transformadaDemoduladaAM,frecuenciaDemoduladaAM,'Demodulada e
 gf.formatoGrafico()
 plt.show()
 
+#3. Graficos FM en el tiempo
+gf.crearSubGrafico(senal,tiempo,'Señal original en el tiempo','Tiempo (s)','Amplitud','g',3,1,1)
+gf.crearSubGrafico(transformadaPortadora,frecuenciaPortadora,'Portadora en la frecuencia','Frecuencia (s)','Amplitud','g',3,1,2)
+gf.crearSubGrafico(moduladacionFM,tiempoInterpolado,'Señal FM en el tiempo','Tiempo (s)','Amplitud','purple',3,1,3)
+gf.formatoGrafico()
+plt.show()
+
+#2. Graficos FM en la frecuencia
+gf.crearSubGrafico(transformadaOriginal,frecuenciaOriginal,'Señal original en la frecuencia','Frecuencia (s)','Amplitud','g',3,1,1)
+gf.crearSubGrafico(transformadaPortadora,frecuenciaPortadora,'Portadora en la frecuencia','Frecuencia (s)','Amplitud','g',3,1,2)
+gf.crearSubGrafico(transformadaFM,frecuenciaFM,'FM en la frecuencia','Frecuencia (s)','Amplitud','g',3,1,3)
+gf.formatoGrafico()
+plt.show()
+
 ################################## Almacenamiento de audio ############################################
 
-esc.guardarWav("salidaDemodulada",100000,demodulacionAM)
+esc.guardarWav("salidaDemodulada",100000,demodulacionAM) #Valor 100000 permite tener el audio original
 esc.guardarWav("salidadModulada",100000,moduladacionAM)
