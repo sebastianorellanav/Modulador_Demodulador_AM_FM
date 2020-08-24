@@ -6,7 +6,7 @@ def modularSenalAM(senal, portadora):
     return mod
 
 
-def modularSenalFM(Ac,senal,senalInterpolada, tiempoInterpolado,frecuenciaInicialPortadora):
+def modularSenalFM(Ac,senalInterpolada, tiempoInterpolado,frecuenciaInicialPortadora):
     senalIntegrada = integrate.cumtrapz(senalInterpolada,tiempoInterpolado,initial=0) 
-    modulacionFM = Ac*np.cos(np.pi*frecuenciaInicialPortadora*tiempoInterpolado + np.pi*senalIntegrada)
+    modulacionFM = Ac*np.cos(2*np.pi*frecuenciaInicialPortadora*tiempoInterpolado + 20*senalIntegrada)
     return modulacionFM

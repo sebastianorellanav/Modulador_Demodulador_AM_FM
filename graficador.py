@@ -1,22 +1,27 @@
 import matplotlib.pylab as plt
 
-def graficarEnTiempo(tiempo, senal, nombre, etiqueta):
-    plt.figure(figsize=(9, 5))
-    plt.plot(tiempo[0:1000],senal[0:1000])
+def graficarEnTiempo(tiempo, senal, nombre, etiqueta,color):
+    plt.figure(figsize=(10, 4))
+    #plt.plot(tiempo[0:1000],senal[0:1000])
+    plt.plot(tiempo,senal,label=etiqueta,color=color)
     plt.xlabel("tiempo (s)")
     plt.ylabel('Amplitud (cm)')
     plt.title(nombre)
     plt.legend(loc='upper right')
-    #plt.xlim([0,0.01]) 
+    plt.xlim([2.570,2.575]) 
+    
+    plt.savefig(nombre)
     plt.grid()
 
-def graficarEnFrecuencias(freq, senal, nombre, etiqueta):
-    plt.figure(figsize=(9, 5))
-    plt.plot(freq, senal)
+def graficarEnFrecuencias(freq, senal, nombre, etiqueta,color):
+    plt.figure(figsize=(10, 4))
+    plt.plot(freq, senal,label=etiqueta,color=color)
     plt.xlabel("Frecuencia (Hz)")
     plt.ylabel('Amplitud (cm)')
     plt.title(nombre)
+    plt.legend(loc='upper right')
     #plt.xlim([-1000,1000])
+    plt.savefig(nombre)
     plt.grid()
 
 def crearSubGraficoTiempo(dato,titulo,xLabel,yLabel,color,filas,columnas,posicion):
