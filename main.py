@@ -83,7 +83,7 @@ transformadaFM,frecuenciaFM = ft.obtenerTransformada(moduladacionFM,frecuenciaMu
 gf.graficarEnTiempo(tiempo,senal,'Señal original en el tiempo',"f(t) = señal original","g")
 gf.graficarEnTiempo(tiempoInterpolado,portadora,'Señal portadora en el tiempo',"portadora = cos(2*pi*fc*t)","r")
 gf.graficarEnTiempo(tiempoInterpolado,moduladacionAM,'Señal AM en el tiempo',"y(t) = K*m(t)*cos(2*pi*fc*t)","purple")
-gf.graficarEnTiempo(tiempoInterpolado,demodulacionAM,'Señal AM Demodulada',"f(t) = señal demulada AM","g")
+gf.graficarEnTiempo(tiempoInterpolado,demodulacionAM,'Señal AM Demodulada',"f(t) = señal demodulada AM","g")
 
 #2. Graficos AM en la frecuencia
 gf.graficarEnFrecuencias(frecuenciaOriginal,transformadaOriginal,'Señal original en la frecuencia',"ftt(f(t)) = señal en frecuencia","g")
